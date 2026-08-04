@@ -499,9 +499,8 @@ local function respawnar(plr)
 		local char = plr.Character
 		local hum  = char and char:FindFirstChildWhichIsA('Humanoid')
 		if hum then hum:ChangeState(Enum.HumanoidStateType.Dead) end
-		char:ClearAllChildren()
-		local tmp = Instance.new('Model'); tmp.Parent = workspace
-		plr.Character = tmp; task.wait(); plr.Character = char; tmp:Destroy()
+				if hum.Health > 0 then hum.Health = 0 end
+		task.wait()
 	end
 end
 
@@ -532,15 +531,13 @@ end
 	local remote = findObfuscatedRemote("Tools/Cooldown")
     if not remote then return end
     sending = true
-    LP.Character = nil
     if loopConnection then loopConnection:Disconnect() end
     loopConnection = RunService.Heartbeat:Connect(function()
         if not sending then return end
         for i = 1, 4 do
             remote:FireServer("f888ee6e-c86d-46e1-93d7-0639d6635d42", LP, "balloon")
         end
-        LP.Character = nil
-    end)
+        end)
 
     if not semiv2cfg.autoDesync then return end
     if respawned then return end
