@@ -1060,11 +1060,9 @@ local function animToggle(t, on)
 	TweenService:Create(t.stroke,    TweenInfo.new(0.2,Enum.EasingStyle.Quad), {Color=tsclr, Transparency=on and 0.25 or 0.55}):Play()
 end
 
-animToggle(tAutoTp, semiv2cfg.autoTpEnabled)
 animToggle(tPotion, semiv2cfg.autoPotion)
 animToggle(tWalk,   semiv2cfg.autoWalk)
 animToggle(tSpeed,  semiv2cfg.speedBoost)
-animToggle(tAp,     semiv2cfg.autoAdminSpam)
 animToggle(tDesync, semiv2cfg.autoDesync)
 
 tDesync.button.MouseButton1Click:Connect(function()
