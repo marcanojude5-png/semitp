@@ -654,10 +654,7 @@ task.spawn(function()
 		for _, v in ipairs(char:GetDescendants()) do
 			if v:IsA("BallSocketConstraint") or v:IsA("HingeConstraint") then
 				v:Destroy()
-			elseif v:IsA("Attachment") then
-				if v.Name ~= TF_FLOAT_ATTACHMENT_NAME then
-					v:Destroy()
-				end
+			
 			elseif v:IsA("Motor6D") then
 				v.Enabled = true
 			end
@@ -705,11 +702,7 @@ task.spawn(function()
 			end
 		end
 
-		for _, v in ipairs(char:GetChildren()) do
-			if v:IsA("Model") and not v:IsA("BackpackItem") then
-				v:Destroy()
-			end
-		end
+
 	end
 end)
 
