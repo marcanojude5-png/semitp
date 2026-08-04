@@ -1063,7 +1063,6 @@ end
 animToggle(tPotion, semiv2cfg.autoPotion)
 animToggle(tWalk,   semiv2cfg.autoWalk)
 animToggle(tSpeed,  semiv2cfg.speedBoost)
-animToggle(tDesync, semiv2cfg.autoDesync)
 
 tDesync.button.MouseButton1Click:Connect(function()
     semiv2cfg.autoDesync = not semiv2cfg.autoDesync
