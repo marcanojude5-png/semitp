@@ -937,12 +937,9 @@ end
 local GAP = ROW_H + ROW_PD
 local Y0  = HDR_H + ROW_PD
 
-local tAutoTp = mkToggle(card, "AUTO TP",           Y0)
 local tPotion = mkToggle(card, "AUTO POTION",       Y0 + GAP)
 local tWalk   = mkToggle(card, "AUTO WALK",         Y0 + GAP*2)
 local tSpeed  = mkToggle(card, "SPEED BOOST",       Y0 + GAP*3)
-local tAp     = mkToggle(card, "AUTO AP",           Y0 + GAP*4)
-local tDesync = mkToggle(card, "AUTO DESYNC",       Y0 + GAP*5)
 
 local autoTpGearBtn = Instance.new("TextButton"); autoTpGearBtn.Name = randStr()
 autoTpGearBtn.Size = UDim2.new(0, M and 18 or 22, 0, M and 18 or 22)
