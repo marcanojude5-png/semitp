@@ -471,7 +471,7 @@ Window.BorderSizePixel = 0
 Window.ClipsDescendants = true
 Window.Parent = GUI
 addCorner(Window, 14)
-addStroke(Window, COLORS.White, 2, 0.58)
+addStroke(Window, Color3.fromRGB(120,200,255), 2, 0.58)
 
 local InterfaceScale = Instance.new("UIScale")
 InterfaceScale.Name = "InterfaceScale"
@@ -545,7 +545,7 @@ local function appendConsoleStatus(name, activated)
 end
 
 -- Logo removed
-makeLabel(Header, "Title", "ACE CODE SNIPER", UDim2.fromOffset(180, 25), UDim2.fromOffset(17, 17), 15, COLORS.White, Enum.Font.GothamBold)
+makeLabel(Header, "Title", "ACE CODE SNIPER", UDim2.fromOffset(180, 25), UDim2.fromOffset(17, 17), 15, Color3.fromRGB(120,200,255), Enum.Font.GothamBold)
 
 -- TOP RIGHT TOGGLE BUTTON REMOVED
 local autoWriteEnabled = true
@@ -557,7 +557,7 @@ local HeaderAccent = Instance.new("Frame")
 HeaderAccent.Name = "TitleDivider"
 HeaderAccent.Size = UDim2.new(1, -34, 0, 1)
 HeaderAccent.Position = UDim2.fromOffset(17, 54)
-HeaderAccent.BackgroundColor3 = COLORS.White
+HeaderAccent.BackgroundColor3 = Color3.fromRGB(120,200,255)
 HeaderAccent.BackgroundTransparency = 0.72
 HeaderAccent.BorderSizePixel = 0
 HeaderAccent.Parent = Header
@@ -580,7 +580,7 @@ local function makeCard(name, position, size)
     card.BorderSizePixel = 0
     card.Parent = Settings
     addCorner(card, 9)
-    addStroke(card, COLORS.White, 2.5, 0.76)
+    addStroke(card, Color3.fromRGB(120,200,255), 2.5, 0.76)
     return card
 end
 
@@ -597,12 +597,12 @@ local function makeStateButton(parent, enabled, consoleName, onToggle)
     button.Active = true
     button.Text = enabled and "ON" or "OFF"
     button.TextSize = 8
-    button.TextColor3 = COLORS.White
+    button.TextColor3 = Color3.fromRGB(120,200,255)
     button.Font = Enum.Font.GothamBold
     button.ZIndex = 5
     button.Parent = parent
     addCorner(button, 6)
-    local outline = addStroke(button, COLORS.White, 2, enabled and 0.62 or 0.88)
+    local outline = addStroke(button, Color3.fromRGB(120,200,255), 2, enabled and 0.62 or 0.88)
     local state = enabled
     local lastSubToggle = 0
     
@@ -613,7 +613,7 @@ local function makeStateButton(parent, enabled, consoleName, onToggle)
         featureStates[consoleName] = state
         button.Text = state and "ON" or "OFF"
         button.BackgroundColor3 = state and COLORS.Green or COLORS.Red
-        button.TextColor3 = COLORS.White
+        button.TextColor3 = Color3.fromRGB(120,200,255)
         outline.Transparency = state and 0.62 or 0.88
         if onToggle then onToggle(state) end
     end
@@ -629,7 +629,7 @@ local function makeStateButton(parent, enabled, consoleName, onToggle)
 end
 
 local AutoCard = makeCard("AutoSubmit", UDim2.fromOffset(17, 0), UDim2.fromOffset(130, 46))
-makeLabel(AutoCard, "Title", "Auto submit", UDim2.new(1, -58, 1, 0), UDim2.fromOffset(12, 0), 11, COLORS.White, Enum.Font.GothamMedium)
+makeLabel(AutoCard, "Title", "Auto submit", UDim2.new(1, -58, 1, 0), UDim2.fromOffset(12, 0), 11, Color3.fromRGB(120,200,255), Enum.Font.GothamMedium)
 makeStateButton(AutoCard, _autoAccept, "Auto submit", function(state)
     _autoAccept = state
     savedConfig.autoSubmit = state
@@ -637,7 +637,7 @@ makeStateButton(AutoCard, _autoAccept, "Auto submit", function(state)
 end)
 
 local AICard = makeCard("AIRiddles", UDim2.fromOffset(158, 0), UDim2.fromOffset(130, 46))
-makeLabel(AICard, "Title", "Riddle solver", UDim2.new(1, -58, 1, 0), UDim2.fromOffset(12, 0), 11, COLORS.White, Enum.Font.GothamMedium)
+makeLabel(AICard, "Title", "Riddle solver", UDim2.new(1, -58, 1, 0), UDim2.fromOffset(12, 0), 11, Color3.fromRGB(120,200,255), Enum.Font.GothamMedium)
 makeStateButton(AICard, _riddleSolver, "Riddle solver", function(state)
     _riddleSolver = state
     savedConfig.riddleSolver = state
@@ -645,7 +645,7 @@ makeStateButton(AICard, _riddleSolver, "Riddle solver", function(state)
 end)
 
 local DelayCard = makeCard("SubmitAfter", UDim2.fromOffset(17, 57), UDim2.fromOffset(270, 40))
-makeLabel(DelayCard, "Title", "Submit after msgs", UDim2.fromOffset(145, 43), UDim2.fromOffset(12, 0), 11, COLORS.White, Enum.Font.GothamMedium)
+makeLabel(DelayCard, "Title", "Submit after msgs", UDim2.fromOffset(145, 43), UDim2.fromOffset(12, 0), 11, Color3.fromRGB(120,200,255), Enum.Font.GothamMedium)
 local CounterShell = Instance.new("Frame")
 CounterShell.Name = "Counter"
 CounterShell.Size = UDim2.fromOffset(96, 31)
@@ -655,7 +655,7 @@ CounterShell.BackgroundTransparency = 0.05
 CounterShell.BorderSizePixel = 0
 CounterShell.Parent = DelayCard
 addCorner(CounterShell, 7)
-addStroke(CounterShell, COLORS.White, 2, 0.86)
+addStroke(CounterShell, Color3.fromRGB(120,200,255), 2, 0.86)
 
 local Minus = Instance.new("TextButton")
 Minus.Name = "Minus"
@@ -672,7 +672,7 @@ Minus.Font = Enum.Font.GothamBold
 Minus.Parent = CounterShell
 addCorner(Minus, 5)
 
-local Count = makeLabel(CounterShell, "Count", tostring(_submitAfter), UDim2.fromOffset(28, 25), UDim2.fromOffset(34, 3), 17, COLORS.White, Enum.Font.GothamBold)
+local Count = makeLabel(CounterShell, "Count", tostring(_submitAfter), UDim2.fromOffset(28, 25), UDim2.fromOffset(34, 3), 17, Color3.fromRGB(120,200,255), Enum.Font.GothamBold)
 Count.TextXAlignment = Enum.TextXAlignment.Center
 
 local Plus = Instance.new("TextButton")
@@ -730,7 +730,7 @@ Console.ScrollBarImageColor3 = COLORS.Dim
 Console.ZIndex = 3
 Console.Parent = Window
 addCorner(Console, 9)
-addStroke(Console, COLORS.White, 2, 0.88)
+addStroke(Console, Color3.fromRGB(120,200,255), 2, 0.88)
 
 ConsoleOutput = Instance.new("TextLabel")
 ConsoleOutput.Name = "ConsoleOutput"
@@ -832,7 +832,7 @@ local function col3ToRich(col)
     if col == COLORS.Green then return CONSOLE_COLORS.Green end
     if col == COLORS.Red then return CONSOLE_COLORS.Red end
     if col == COLORS.Text then return CONSOLE_COLORS.Amber end
-    if col == COLORS.White then return CONSOLE_COLORS.Cyan end
+    if col == Color3.fromRGB(120,200,255) then return CONSOLE_COLORS.Cyan end
     if col == COLORS.Dim then return CONSOLE_COLORS.Dim end
     return string.format("rgb(%d,%d,%d)", math.floor(col.R * 255 + 0.5), math.floor(col.G * 255 + 0.5), math.floor(col.B * 255 + 0.5))
 end
@@ -850,7 +850,7 @@ end
 
 function flashCode(code, col)
     if not code or code == "" or code == "—" then return end
-    setStatus("[code] -> " .. tostring(code), col or COLORS.White)
+    setStatus("[code] -> " .. tostring(code), col or Color3.fromRGB(120,200,255))
 end
 
 local function resetPasteCounter() _capturedParts = {} end
@@ -1128,4 +1128,3 @@ if getgenv then
         end
         if GUI then GUI:Destroy() end
     end
-end
