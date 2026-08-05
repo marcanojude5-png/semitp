@@ -711,19 +711,11 @@ Minus.MouseButton1Click:Connect(decr)
 Plus.Activated:Connect(incr)
 Plus.MouseButton1Click:Connect(incr)
 
-local RetypeCard = makeCard("RetypeInvalid", UDim2.fromOffset(17, 103), UDim2.fromOffset(270, 36))
-makeLabel(RetypeCard, "Title", "Retype invalid", UDim2.new(1, -65, 1, 0), UDim2.fromOffset(12, 0), 11, COLORS.White, Enum.Font.GothamMedium)
-local RetypeState = makeStateButton(RetypeCard, _retypeInvalid, "Retype invalid", function(state)
-    _retypeInvalid = state
-    savedConfig.retypeInvalid = state
-    saveConfig()
-end)
-RetypeState.Position = UDim2.new(1, -50, 0.5, -10)
 
 Console = Instance.new("ScrollingFrame")
 Console.Name = "Console"
 Console.Size = UDim2.new(1, -34, 0, 127)
-Console.Position = UDim2.fromOffset(17, 216)
+Console.Position = UDim2.fromOffset(17, 176)
 Console.BackgroundColor3 = COLORS.Log
 Console.BorderSizePixel = 0
 Console.ClipsDescendants = true
