@@ -765,7 +765,7 @@ task.defer(updateConsoleCanvas)
 
 -- WINDOW DRAGGING SYSTEM WITH TOUCH INTEGRATION --
 do
-    local dragging = true
+    local dragging = false
     local activeDragInput
     local dragStart
     local startPosition
