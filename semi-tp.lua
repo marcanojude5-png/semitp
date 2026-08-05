@@ -591,13 +591,13 @@ local function makeStateButton(parent, enabled, consoleName, onToggle)
     button.Name = "State"
     button.Size = UDim2.fromOffset(42, 20)
     button.Position = UDim2.new(1, -50, 0.5, -10)
-    button.BackgroundColor3 = enabled and COLORS.Accent or COLORS.Control
+    button.BackgroundColor3 = enabled and COLORS.Green or COLORS.Red
     button.BorderSizePixel = 0
     button.AutoButtonColor = false
     button.Active = true
     button.Text = enabled and "ON" or "OFF"
     button.TextSize = 8
-    button.TextColor3 = enabled and COLORS.Window or COLORS.Dim
+    button.TextColor3 = COLORS.White
     button.Font = Enum.Font.GothamBold
     button.ZIndex = 5
     button.Parent = parent
@@ -612,10 +612,9 @@ local function makeStateButton(parent, enabled, consoleName, onToggle)
         state = not state
         featureStates[consoleName] = state
         button.Text = state and "ON" or "OFF"
-        button.BackgroundColor3 = state and COLORS.Accent or COLORS.Control
-        button.TextColor3 = state and COLORS.Window or COLORS.Dim
+        button.BackgroundColor3 = state and COLORS.Green or COLORS.Red
+        button.TextColor3 = COLORS.White
         outline.Transparency = state and 0.62 or 0.88
-        if autoWriteEnabled then appendConsoleStatus(consoleName, state) end
         if onToggle then onToggle(state) end
     end
     
