@@ -1746,8 +1746,7 @@ end
 
 repeat task.wait() until game:IsLoaded()
 
--- ===================== FEXHUB - STARTUP SPLASH =====================
-do
+-- splash removed
 	local Players = game:GetService("Players")
 	local LP2 = Players.LocalPlayer
 	local TweenService2 = game:GetService("TweenService")
