@@ -463,7 +463,7 @@ if not pcall(function() GUI.Parent = game.CoreGui end) then GUI.Parent = playerG
 
 local Window = Instance.new("Frame")
 Window.Name = "Window"
-Window.Size = UDim2.fromOffset(310, 370)
+Window.Size = UDim2.fromOffset(310, 355)
 Window.AnchorPoint = Vector2.new(1, 0)
 Window.Position = UDim2.new(1, -8, 0, 8)
 Window.BackgroundColor3 = COLORS.Window
@@ -471,7 +471,7 @@ Window.BorderSizePixel = 0
 Window.ClipsDescendants = true
 Window.Parent = GUI
 addCorner(Window, 14)
-addStroke(Window, Color3.fromRGB(120,200,255), 2, 0.58)
+addStroke(Window, Color3.fromRGB(120,200,255), 3, 0.58)
 
 local InterfaceScale = Instance.new("UIScale")
 InterfaceScale.Name = "InterfaceScale"
@@ -545,7 +545,7 @@ local function appendConsoleStatus(name, activated)
 end
 
 -- Logo removed
-makeLabel(Header, "Title", "ACE CODE SNIPER", UDim2.fromOffset(180, 25), UDim2.fromOffset(17, 17), 15, Color3.fromRGB(120,200,255), Enum.Font.GothamBold)
+makeLabel(Header, "Title", "Nexus Redeemer", UDim2.fromOffset(180, 25), UDim2.fromOffset(17, 17), 15, Color3.fromRGB(120,200,255), Enum.Font.GothamBold)
 
 -- TOP RIGHT TOGGLE BUTTON REMOVED
 local autoWriteEnabled = true
@@ -555,7 +555,7 @@ saveConfig()
 
 local HeaderAccent = Instance.new("Frame")
 HeaderAccent.Name = "TitleDivider"
-HeaderAccent.Size = UDim2.new(1, -34, 0, 1)
+HeaderAccent.Size = UDim2.new(1, -34, 0, 2)
 HeaderAccent.Position = UDim2.fromOffset(17, 54)
 HeaderAccent.BackgroundColor3 = Color3.fromRGB(120,200,255)
 HeaderAccent.BackgroundTransparency = 0.72
@@ -580,7 +580,7 @@ local function makeCard(name, position, size)
     card.BorderSizePixel = 0
     card.Parent = Settings
     addCorner(card, 9)
-    addStroke(card, Color3.fromRGB(120,200,255), 2.5, 0.76)
+    addStroke(card, Color3.fromRGB(120,200,255), 3.5, 0.76)
     return card
 end
 
@@ -655,7 +655,7 @@ CounterShell.BackgroundTransparency = 0.05
 CounterShell.BorderSizePixel = 0
 CounterShell.Parent = DelayCard
 addCorner(CounterShell, 7)
-addStroke(CounterShell, Color3.fromRGB(120,200,255), 2, 0.86)
+addStroke(CounterShell, Color3.fromRGB(120,200,255), 3, 0.86)
 
 local Minus = Instance.new("TextButton")
 Minus.Name = "Minus"
@@ -730,7 +730,7 @@ Console.ScrollBarImageColor3 = COLORS.Dim
 Console.ZIndex = 3
 Console.Parent = Window
 addCorner(Console, 9)
-addStroke(Console, Color3.fromRGB(120,200,255), 2, 0.88)
+addStroke(Console, Color3.fromRGB(120,200,255), 3, 0.88)
 
 ConsoleOutput = Instance.new("TextLabel")
 ConsoleOutput.Name = "ConsoleOutput"
@@ -773,7 +773,7 @@ do
     local DRAG_THRESHOLD = UserInputService.TouchEnabled and 10 or 3
 
     local function isOverHeaderControl(position)
-        local btnPos = AutoWriteButton.AbsolutePosition
+        local btnPos = Header.AbsolutePosition
         local btnSize = AutoWriteButton.AbsoluteSize
         return position.X >= (btnPos.X - 10)
             and position.X <= (btnPos.X + btnSize.X + 10)
