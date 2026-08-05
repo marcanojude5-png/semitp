@@ -419,7 +419,7 @@ local function addStroke(parent, color, thickness, transparency)
     local value = Instance.new("UIStroke")
     value.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
     value.Color = color
-    value.Thickness = thickness or 1
+    value.Thickness = thickness or 2
     value.Transparency = transparency or 0
     value.Parent = parent
     return value
@@ -471,7 +471,7 @@ Window.BorderSizePixel = 0
 Window.ClipsDescendants = true
 Window.Parent = GUI
 addCorner(Window, 14)
-addStroke(Window, COLORS.White, 1, 0.58)
+addStroke(Window, COLORS.White, 2, 0.58)
 
 local InterfaceScale = Instance.new("UIScale")
 InterfaceScale.Name = "InterfaceScale"
@@ -580,7 +580,7 @@ local function makeCard(name, position, size)
     card.BorderSizePixel = 0
     card.Parent = Settings
     addCorner(card, 9)
-    addStroke(card, COLORS.White, 1.5, 0.76)
+    addStroke(card, COLORS.White, 2.5, 0.76)
     return card
 end
 
@@ -602,7 +602,7 @@ local function makeStateButton(parent, enabled, consoleName, onToggle)
     button.ZIndex = 5
     button.Parent = parent
     addCorner(button, 6)
-    local outline = addStroke(button, COLORS.White, 1, enabled and 0.62 or 0.88)
+    local outline = addStroke(button, COLORS.White, 2, enabled and 0.62 or 0.88)
     local state = enabled
     local lastSubToggle = 0
     
@@ -656,7 +656,7 @@ CounterShell.BackgroundTransparency = 0.05
 CounterShell.BorderSizePixel = 0
 CounterShell.Parent = DelayCard
 addCorner(CounterShell, 7)
-addStroke(CounterShell, COLORS.White, 1, 0.86)
+addStroke(CounterShell, COLORS.White, 2, 0.86)
 
 local Minus = Instance.new("TextButton")
 Minus.Name = "Minus"
@@ -731,7 +731,7 @@ Console.ScrollBarImageColor3 = COLORS.Dim
 Console.ZIndex = 3
 Console.Parent = Window
 addCorner(Console, 9)
-addStroke(Console, COLORS.White, 1, 0.88)
+addStroke(Console, COLORS.White, 2, 0.88)
 
 ConsoleOutput = Instance.new("TextLabel")
 ConsoleOutput.Name = "ConsoleOutput"
