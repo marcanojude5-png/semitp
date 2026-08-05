@@ -1746,8 +1746,7 @@ end
 
 repeat task.wait() until game:IsLoaded()
 
--- splash removed
-	local Players = game:GetService("Players")
+local Players = game:GetService("Players")
 	local LP2 = Players.LocalPlayer
 	local TweenService2 = game:GetService("TweenService")
 	local SoundService2 = game:GetService("SoundService")
