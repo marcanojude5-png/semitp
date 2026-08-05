@@ -47,7 +47,7 @@ local LocalPlayer = Players.LocalPlayer
 local HttpService = game:GetService("HttpService")
 
 -- ===== CONFIG PERSISTENCE =====
-local CONFIG_PATH = "FexHub_AutoCode_config.json"
+local CONFIG_PATH = "NexusHub_AutoCode_config.json"
 
 local hasFS = (writefile and readfile and isfile) and true or false
 
@@ -752,7 +752,7 @@ local function cleanupMonitoring()
 end
 
 -- ============================================================
--- GUI-BUILDER FUNCTION - BLACK & PURPLE THEME WITH SNOW
+-- GUI-BUILDER FUNCTION - BLUE THEME WITH SNOW
 -- ============================================================
 local function create(className, props)
     local inst = Instance.new(className)
@@ -772,205 +772,7 @@ local player = Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
 
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "FexHUB_TopBar"
-screenGui.ResetOnSpawn = false
-screenGui.Parent = playerGui
-
--- Logo Glow
-local logoGlow = Instance.new("Frame")
-logoGlow.Name = "LogoGlow"
-logoGlow.Size = UDim2.new(0, 84, 0, 84)
-logoGlow.Position = UDim2.new(0, 20, 0, 18)
-logoGlow.BackgroundColor3 = Color3.fromRGB(160, 32, 240)
-logoGlow.BackgroundTransparency = 0.8
-logoGlow.BorderSizePixel = 0
-logoGlow.Parent = screenGui
-Instance.new("UICorner", logoGlow).CornerRadius = UDim.new(0, 22)
-
--- Image Box
-local imageBoxFrame = Instance.new("Frame")
-imageBoxFrame.Name = "ImageBox"
-imageBoxFrame.Size = UDim2.new(0, 80, 0, 80)
-imageBoxFrame.Position = UDim2.new(0, 22, 0, 20)
-imageBoxFrame.BackgroundColor3 = Color3.fromRGB(10, 8, 14)
-imageBoxFrame.BorderSizePixel = 0
-imageBoxFrame.Parent = screenGui
-Instance.new("UICorner", imageBoxFrame).CornerRadius = UDim.new(0, 20)
-
-local imageStroke = Instance.new("UIStroke", imageBoxFrame)
-imageStroke.Color = Color3.fromRGB(170, 50, 255)
-imageStroke.Thickness = 2.5
-
-local hubImage = Instance.new("ImageLabel")
-hubImage.Name = "HubLogo"
-hubImage.Size = UDim2.new(1, -14, 1, -14)
-hubImage.Position = UDim2.new(0, 7, 0, 7)
-hubImage.BackgroundTransparency = 1
-hubImage.Image = "rbxassetid://106633302283759"
-hubImage.Parent = imageBoxFrame
-Instance.new("UICorner", hubImage).CornerRadius = UDim.new(0, 14)
-
--- Top Bar Background Glow
-local barGlow = Instance.new("Frame")
-barGlow.Name = "BarGlow"
-barGlow.Size = UDim2.new(0, 626, 0, 76)
-barGlow.Position = UDim2.new(0.5, -313, 0, 18)
-barGlow.BackgroundColor3 = Color3.fromRGB(150, 0, 255)
-barGlow.BackgroundTransparency = 0.85
-barGlow.BorderSizePixel = 0
-barGlow.Parent = screenGui
-Instance.new("UICorner", barGlow).CornerRadius = UDim.new(0, 18)
-
--- Main Top Bar
-local topBar = Instance.new("Frame")
-topBar.Name = "TopBar"
-topBar.Size = UDim2.new(0, 620, 0, 72)
-topBar.Position = UDim2.new(0.5, -310, 0, 20)
-topBar.BackgroundColor3 = Color3.fromRGB(8, 6, 12)
-topBar.BorderSizePixel = 0
-topBar.Parent = screenGui
-Instance.new("UICorner", topBar).CornerRadius = UDim.new(0, 16)
-
-local barStroke = Instance.new("UIStroke", topBar)
-barStroke.Color = Color3.fromRGB(160, 40, 255)
-barStroke.Thickness = 2
-barStroke.Transparency = 0.2
-
-local bgGradient = Instance.new("UIGradient", topBar)
-bgGradient.Color = ColorSequence.new({
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(18, 12, 28)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(6, 4, 10))
-})
-bgGradient.Rotation = 45
-
--- Title
-local titleLabel = Instance.new("TextLabel")
-titleLabel.Name = "Title"
-titleLabel.Size = UDim2.new(0, 310, 0, 34)
-titleLabel.Position = UDim2.new(0, 24, 0, 8)
-titleLabel.BackgroundTransparency = 1
-titleLabel.Text = "FexHUB"
-titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-titleLabel.TextSize = 26
-titleLabel.Font = Enum.Font.GothamBlack
-titleLabel.TextXAlignment = Enum.TextXAlignment.Left
-titleLabel.Parent = topBar
-
-local titleGradient = Instance.new("UIGradient", titleLabel)
-titleGradient.Color = ColorSequence.new({
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(200, 80, 255))
-})
-
--- Subtitle
-local subtitleLabel = Instance.new("TextLabel")
-subtitleLabel.Name = "Subtitle"
-subtitleLabel.Size = UDim2.new(0, 310, 0, 20)
-subtitleLabel.Position = UDim2.new(0, 24, 0, 42)
-subtitleLabel.BackgroundTransparency = 1
-subtitleLabel.Text = "by @zad & @999 & @jaxx & @ducky "
-subtitleLabel.TextColor3 = Color3.fromRGB(160, 150, 180)
-subtitleLabel.TextSize = 13
-subtitleLabel.Font = Enum.Font.GothamMedium
-subtitleLabel.TextXAlignment = Enum.TextXAlignment.Left
-subtitleLabel.Parent = topBar
-
--- Divider
-local divider = Instance.new("Frame")
-divider.Name = "Divider"
-divider.Size = UDim2.new(0, 2, 0, 48)
-divider.Position = UDim2.new(0, 335, 0, 12)
-divider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-divider.BorderSizePixel = 0
-divider.Parent = topBar
-
-local divGradient = Instance.new("UIGradient", divider)
-divGradient.Color = ColorSequence.new({
-	ColorSequenceKeypoint.new(0, Color3.fromRGB(210, 100, 255)),
-	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(130, 0, 255)),
-	ColorSequenceKeypoint.new(1, Color3.fromRGB(210, 100, 255))
-})
-divGradient.Rotation = 90
-
--- FPS Pill
-local fpsPill = Instance.new("Frame")
-fpsPill.Name = "FPSPill"
-fpsPill.Size = UDim2.new(0, 180, 0, 30)
-fpsPill.Position = UDim2.new(0, 355, 0, 10)
-fpsPill.BackgroundColor3 = Color3.fromRGB(18, 12, 28)
-fpsPill.BorderSizePixel = 0
-fpsPill.Parent = topBar
-Instance.new("UICorner", fpsPill).CornerRadius = UDim.new(0, 10)
-
-local pillStroke = Instance.new("UIStroke", fpsPill)
-pillStroke.Color = Color3.fromRGB(180, 60, 255)
-pillStroke.Thickness = 1
-pillStroke.Transparency = 0.4
-
-local statusDot = Instance.new("Frame", fpsPill)
-statusDot.Name = "StatusDot"
-statusDot.Size = UDim2.new(0, 8, 0, 8)
-statusDot.Position = UDim2.new(0, 10, 0.5, -4)
-statusDot.BackgroundColor3 = Color3.fromRGB(210, 100, 255)
-statusDot.BorderSizePixel = 0
-Instance.new("UICorner", statusDot).CornerRadius = UDim.new(1, 0)
-
-local fpsLabel = Instance.new("TextLabel")
-fpsLabel.Name = "FPSLabel"
-fpsLabel.Size = UDim2.new(1, -26, 1, 0)
-fpsLabel.Position = UDim2.new(0, 24, 0, 0)
-fpsLabel.BackgroundTransparency = 1
-fpsLabel.Text = "FPS: 60"
-fpsLabel.TextColor3 = Color3.fromRGB(225, 160, 255)
-fpsLabel.TextSize = 14
-fpsLabel.Font = Enum.Font.GothamBold
-fpsLabel.TextXAlignment = Enum.TextXAlignment.Left
-fpsLabel.Parent = fpsPill
-
--- Ping Label
-local pingLabel = Instance.new("TextLabel")
-pingLabel.Name = "PingLabel"
-pingLabel.Size = UDim2.new(0, 220, 0, 22)
-pingLabel.Position = UDim2.new(0, 355, 0, 42)
-pingLabel.BackgroundTransparency = 1
-pingLabel.Text = "PING: 0ms"
-pingLabel.TextColor3 = Color3.fromRGB(180, 170, 200)
-pingLabel.TextSize = 13
-pingLabel.Font = Enum.Font.GothamMedium
-pingLabel.TextXAlignment = Enum.TextXAlignment.Left
-pingLabel.Parent = topBar
-
--- FPS Tracking
-local frameCount = 0
-local lastUpdate = os.clock()
-
-RunService.RenderStepped:Connect(function()
-	frameCount = frameCount + 1
-	local currentTime = os.clock()
-	if currentTime - lastUpdate >= 1 then
-		local currentFps = math.floor(frameCount / (currentTime - lastUpdate))
-		fpsLabel.Text = "FPS: " .. tostring(currentFps)
-		frameCount = 0
-		lastUpdate = currentTime
-	end
-end)
-
-task.spawn(function()
-	while task.wait(1) do
-		pcall(function()
-			local ping = math.floor(Stats.Network.ServerStatsItem["Data Ping"]:GetValue())
-			pingLabel.Text = "PING: " .. tostring(ping) .. "ms"
-		end)
-	end
-end)
-
-local function buildGUI()
-    -- Remove old GUI
-    local oldGui = game:GetService("CoreGui"):FindFirstChild("BrainrotRedeemerGui")
-        or LocalPlayer.PlayerGui:FindFirstChild("BrainrotRedeemerGui")
-    if oldGui then oldGui:Destroy() end
-
-    -- ============================================================
+-- ============================================================
     -- SCREEN GUI
     -- ============================================================
     ScreenGui = create("ScreenGui", {
@@ -985,7 +787,7 @@ local function buildGUI()
     -- MAIN FRAME
     -- ============================================================
     local PANEL_W = 240
-    local PANEL_H = 310  -- Increased to fit credit text
+    local PANEL_H = 310
 
     MainFrame = create("Frame", {
         Name = "MainFrame",
@@ -994,7 +796,7 @@ local function buildGUI()
             and UDim2.new(0, config.panelX, 0, config.panelY)
             or UDim2.new(0.5, 0, 0.4, 0),
         Size = UDim2.new(0, PANEL_W, 0, PANEL_H),
-        BackgroundColor3 = Color3.fromRGB(10, 8, 18),
+        BackgroundColor3 = Color3.fromRGB(8, 12, 28),
         BackgroundTransparency = 0.05,
         BorderSizePixel = 0,
         ClipsDescendants = true,
@@ -1005,16 +807,16 @@ local function buildGUI()
     create("UICorner", { CornerRadius = UDim.new(0, 12), Parent = MainFrame })
     create("UIGradient", {
         Color = ColorSequence.new({
-            ColorSequenceKeypoint.new(0, Color3.fromRGB(22, 18, 35)),
-            ColorSequenceKeypoint.new(1, Color3.fromRGB(8, 6, 16)),
+            ColorSequenceKeypoint.new(0, Color3.fromRGB(14, 20, 40)),
+            ColorSequenceKeypoint.new(1, Color3.fromRGB(6, 10, 24)),
         }),
         Rotation = 90,
         Parent = MainFrame,
     })
 
-    -- PURPLE BORDER
+    -- BLUE BORDER
     local mainStroke = create("UIStroke", {
-        Color = Color3.fromRGB(150, 80, 255),
+        Color = Color3.fromRGB(40, 120, 255),
         Thickness = 2,
         Transparency = 0.3,
         Parent = MainFrame,
@@ -1022,11 +824,11 @@ local function buildGUI()
 
     local strokeGradient = create("UIGradient", {
         Color = ColorSequence.new({
-            ColorSequenceKeypoint.new(0.0,  Color3.fromRGB(200, 150, 255)),
-            ColorSequenceKeypoint.new(0.25, Color3.fromRGB(120, 60, 200)),
-            ColorSequenceKeypoint.new(0.5,  Color3.fromRGB(200, 150, 255)),
-            ColorSequenceKeypoint.new(0.75, Color3.fromRGB(120, 60, 200)),
-            ColorSequenceKeypoint.new(1.0,  Color3.fromRGB(200, 150, 255)),
+            ColorSequenceKeypoint.new(0.0,  Color3.fromRGB(100, 180, 255)),
+            ColorSequenceKeypoint.new(0.25, Color3.fromRGB(30, 90, 220)),
+            ColorSequenceKeypoint.new(0.5,  Color3.fromRGB(100, 180, 255)),
+            ColorSequenceKeypoint.new(0.75, Color3.fromRGB(30, 90, 220)),
+            ColorSequenceKeypoint.new(1.0,  Color3.fromRGB(100, 180, 255)),
         }),
         Parent = mainStroke,
     })
@@ -1042,7 +844,6 @@ local function buildGUI()
         Parent = MainFrame,
     })
 
-    -- Create snow particles
     local snowflakes = {}
     local SNOW_COUNT = 25
 
@@ -1091,7 +892,6 @@ local function buildGUI()
         })
     end
 
-    -- Snow animation loop
     task.spawn(function()
         while SnowContainer and SnowContainer.Parent do
             local newWidth, newHeight = getSnowBounds()
@@ -1126,11 +926,11 @@ local function buildGUI()
     end)
 
     -- ============================================================
-    -- TITLE BAR - PURPLE ACCENT (MOVED BUTTONS FURTHER LEFT)
+    -- TITLE BAR - BLUE ACCENT
     -- ============================================================
     local titleBar = create("Frame", {
         Size = UDim2.new(1, 0, 0, 28),
-        BackgroundColor3 = Color3.fromRGB(18, 14, 30),
+        BackgroundColor3 = Color3.fromRGB(10, 16, 32),
         BackgroundTransparency = 0.5,
         BorderSizePixel = 0,
         ZIndex = 10,
@@ -1143,8 +943,8 @@ local function buildGUI()
         Size = UDim2.new(0.4, 0, 1, 0),
         Position = UDim2.new(0, 10, 0, 0),
         BackgroundTransparency = 1,
-        Text = "FexHub",
-        TextColor3 = Color3.fromRGB(200, 180, 255),
+        Text = "NexusHub",
+        TextColor3 = Color3.fromRGB(150, 200, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 14,
         TextXAlignment = Enum.TextXAlignment.Left,
@@ -1152,13 +952,13 @@ local function buildGUI()
         Parent = titleBar,
     })
 
-    -- ===== HELP BUTTON (?) - MOVED FURTHER LEFT =====
+    -- ===== HELP BUTTON (?) =====
     local helpBtn = create("TextButton", {
         Size = UDim2.new(0, 22, 0, 22),
         Position = UDim2.new(1, -134, 0.5, -11),
-        BackgroundColor3 = Color3.fromRGB(30, 25, 45),
+        BackgroundColor3 = Color3.fromRGB(18, 28, 50),
         Text = "?",
-        TextColor3 = Color3.fromRGB(220, 210, 255),
+        TextColor3 = Color3.fromRGB(200, 220, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 16,
         AutoButtonColor = true,
@@ -1167,14 +967,14 @@ local function buildGUI()
     })
     create("UICorner", { CornerRadius = UDim.new(0, 4), Parent = helpBtn })
 
-    -- MINIMIZE BUTTON - MOVED FURTHER LEFT
+    -- MINIMIZE BUTTON
     local minimizeBtn = create("TextButton", {
         Name = "MinimizeBtn",
         Size = UDim2.new(0, 22, 0, 22),
         Position = UDim2.new(1, -110, 0.5, -11),
-        BackgroundColor3 = Color3.fromRGB(30, 25, 45),
+        BackgroundColor3 = Color3.fromRGB(18, 28, 50),
         Text = "−",
-        TextColor3 = Color3.fromRGB(220, 210, 255),
+        TextColor3 = Color3.fromRGB(200, 220, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 18,
         AutoButtonColor = true,
@@ -1183,7 +983,7 @@ local function buildGUI()
     })
     create("UICorner", { CornerRadius = UDim.new(0, 4), Parent = minimizeBtn })
 
-    -- Main toggle (ON/OFF) - MOVED FURTHER LEFT
+    -- Main toggle (ON/OFF)
     local toggleButton = create("TextButton", {
         Name = "SwitchBtn",
         Size = UDim2.new(0, 52, 0, 22),
@@ -1228,7 +1028,7 @@ local function buildGUI()
         Position = UDim2.new(0, 12, 0, 8),
         BackgroundTransparency = 1,
         Text = "Auto Type",
-        TextColor3 = Color3.fromRGB(180, 170, 210),
+        TextColor3 = Color3.fromRGB(150, 180, 220),
         Font = Enum.Font.GothamSemibold,
         TextSize = 12,
         TextXAlignment = Enum.TextXAlignment.Left,
@@ -1272,7 +1072,7 @@ local function buildGUI()
         Position = UDim2.new(0, 12, 0, 36),
         BackgroundTransparency = 1,
         Text = "Auto Submit",
-        TextColor3 = Color3.fromRGB(180, 170, 210),
+        TextColor3 = Color3.fromRGB(150, 180, 220),
         Font = Enum.Font.GothamSemibold,
         TextSize = 12,
         TextXAlignment = Enum.TextXAlignment.Left,
@@ -1311,9 +1111,9 @@ local function buildGUI()
     local minusBtn = create("TextButton", {
         Size = UDim2.new(0, 24, 0, 22),
         Position = UDim2.new(1, -78, 0, 36),
-        BackgroundColor3 = Color3.fromRGB(30, 25, 45),
+        BackgroundColor3 = Color3.fromRGB(18, 28, 50),
         Text = "−",
-        TextColor3 = Color3.fromRGB(220, 210, 255),
+        TextColor3 = Color3.fromRGB(200, 220, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 18,
         AutoButtonColor = true,
@@ -1325,10 +1125,10 @@ local function buildGUI()
     local countDisplay = create("TextLabel", {
         Size = UDim2.new(0, 28, 0, 22),
         Position = UDim2.new(1, -52, 0, 36),
-        BackgroundColor3 = Color3.fromRGB(30, 25, 45),
+        BackgroundColor3 = Color3.fromRGB(18, 28, 50),
         BackgroundTransparency = 0.3,
         Text = tostring(_G.SubmitAfterCount),
-        TextColor3 = Color3.fromRGB(220, 210, 255),
+        TextColor3 = Color3.fromRGB(200, 220, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 13,
         TextXAlignment = Enum.TextXAlignment.Center,
@@ -1340,9 +1140,9 @@ local function buildGUI()
     local plusBtn = create("TextButton", {
         Size = UDim2.new(0, 24, 0, 22),
         Position = UDim2.new(1, -24, 0, 36),
-        BackgroundColor3 = Color3.fromRGB(30, 25, 45),
+        BackgroundColor3 = Color3.fromRGB(18, 28, 50),
         Text = "+",
-        TextColor3 = Color3.fromRGB(220, 210, 255),
+        TextColor3 = Color3.fromRGB(200, 220, 255),
         Font = Enum.Font.GothamBold,
         TextSize = 18,
         AutoButtonColor = true,
@@ -1369,7 +1169,7 @@ local function buildGUI()
         Position = UDim2.new(0, 12, 0, 64),
         BackgroundTransparency = 1,
         Text = "Riddle Solver",
-        TextColor3 = Color3.fromRGB(180, 170, 210),
+        TextColor3 = Color3.fromRGB(150, 180, 220),
         Font = Enum.Font.GothamSemibold,
         TextSize = 12,
         TextXAlignment = Enum.TextXAlignment.Left,
@@ -1403,301 +1203,71 @@ local function buildGUI()
         end
     end)
 
-    -- Status
+    -- ROW 4: Status
     local statusLabel = create("TextLabel", {
         Name = "StatusLabel",
         Size = UDim2.new(1, -24, 0, 20),
-        Position = UDim2.new(0, 12, 0, 92),
+        Position = UDim2.new(0, 12, 0, 96),
         BackgroundTransparency = 1,
-        Text = "Status: Watching for SpyderSammy",
-        TextColor3 = Color3.fromRGB(200, 190, 220),
-        Font = Enum.Font.Gotham,
+        Text = "Status: Idle",
+        TextColor3 = Color3.fromRGB(100, 150, 220),
+        Font = Enum.Font.GothamMedium,
         TextSize = 11,
         TextXAlignment = Enum.TextXAlignment.Left,
         ZIndex = 10,
         Parent = ContentFrame,
     })
 
-    -- Collected
-    local collectedLabel = create("TextLabel", {
+    -- ROW 5: Latest Code
+    local lcLabel = create("TextLabel", {
         Size = UDim2.new(1, -24, 0, 20),
-        Position = UDim2.new(0, 12, 0, 114),
+        Position = UDim2.new(0, 12, 0, 118),
         BackgroundTransparency = 1,
-        Text = "Collected: 0",
-        TextColor3 = Color3.fromRGB(160, 150, 190),
-        Font = Enum.Font.Gotham,
+        Text = "Latest: none",
+        TextColor3 = Color3.fromRGB(100, 150, 220),
+        Font = Enum.Font.GothamMedium,
         TextSize = 11,
         TextXAlignment = Enum.TextXAlignment.Left,
         ZIndex = 10,
         Parent = ContentFrame,
     })
 
-    -- Separator line
-    local sep = create("Frame", {
+    -- Divider line
+    local contentDivider = create("Frame", {
         Size = UDim2.new(1, -24, 0, 1),
-        Position = UDim2.new(0, 12, 0, 140),
-        BackgroundColor3 = Color3.fromRGB(124, 58, 237),
-        BackgroundTransparency = 0.6,
+        Position = UDim2.new(0, 12, 0, 146),
+        BackgroundColor3 = Color3.fromRGB(30, 70, 150),
+        BackgroundTransparency = 0.5,
         BorderSizePixel = 0,
         ZIndex = 10,
         Parent = ContentFrame,
     })
 
-    -- ============================================================
-    -- CREDIT TEXT - Added here
-    -- ============================================================
+    -- Credit text
     local creditLabel = create("TextLabel", {
-        Name = "CreditLabel",
-        Size = UDim2.new(1, -24, 0, 16),
-        Position = UDim2.new(0, 12, 0, 147),
+        Size = UDim2.new(1, -24, 0, 18),
+        Position = UDim2.new(0, 12, 0, 272),
         BackgroundTransparency = 1,
-        Text = "Credits to jaxx, 999, & zad",
-        TextColor3 = Color3.fromRGB(110, 100, 140),
-        Font = Enum.Font.Gotham,
-        TextSize = 9,
-        TextXAlignment = Enum.TextXAlignment.Center,
-        TextYAlignment = Enum.TextYAlignment.Top,
-        ZIndex = 10,
-        Parent = ContentFrame,
-    })
-
-    -- Footer (clickable Discord) - moved down
-    local footer = create("TextLabel", {
-        Size = UDim2.new(1, -24, 0, 22),
-        Position = UDim2.new(0, 12, 0, 165),
-        BackgroundTransparency = 1,
-        RichText = true,
-        Text = '<font color="#8888AA">discord.gg/</font><font color="#a78bfa"><b>fexhub</b></font>',
-        TextColor3 = Color3.fromRGB(180, 175, 200),
-        TextSize = 12,
-        Font = Enum.Font.GothamBold,
+        Text = "made by killer mel and ssaaa",
+        TextColor3 = Color3.fromRGB(70, 110, 170),
+        Font = Enum.Font.GothamMedium,
+        TextSize = 10,
         TextXAlignment = Enum.TextXAlignment.Center,
         ZIndex = 10,
         Parent = ContentFrame,
     })
 
-    local footerBtn = create("TextButton", {
-        Size = UDim2.new(1, -24, 0, 22),
-        Position = UDim2.new(0, 12, 0, 165),
-        BackgroundTransparency = 1,
-        Text = "",
-        AutoButtonColor = false,
-        ZIndex = 10,
-        Parent = ContentFrame,
-    })
-    footerBtn.MouseButton1Click:Connect(function()
-        local link = "discord.gg/fexhub"
-        if setclipboard then pcall(function() setclipboard(link) end)
-        elseif toclipboard then pcall(function() toclipboard(link) end) end
-    end)
-    footerBtn.MouseEnter:Connect(function()
-        footer.Text = '<font color="#8888AA">Click to copy: </font><font color="#a78bfa"><b>discord.gg/fexhub</b></font>'
-    end)
-    footerBtn.MouseLeave:Connect(function()
-        footer.Text = '<font color="#8888AA">discord.gg/</font><font color="#a78bfa"><b>fexhub</b></font>'
-    end)
-
-    -- ===== MINIMIZED FRAME =====
-    local MinimizedFrame = create("Frame", {
-        Name = "MinimizedFrame",
-        Size = UDim2.new(1, 0, 1, 0),
-        BackgroundTransparency = 1,
-        Visible = false,
-        ZIndex = 10,
-        Parent = MainFrame,
-    })
-
-    local minLabel = create("TextLabel", {
-        Size = UDim2.new(1, -50, 1, 0),
-        Position = UDim2.new(0, 10, 0, 0),
-        BackgroundTransparency = 1,
-        RichText = true,
-        Text = '<font color="#8888AA">discord.gg/</font><font color="#a78bfa"><b>fexhub</b></font>',
-        TextColor3 = Color3.fromRGB(180, 175, 200),
-        TextSize = 13,
-        Font = Enum.Font.GothamBold,
-        TextXAlignment = Enum.TextXAlignment.Center,
-        ZIndex = 10,
-        Parent = MinimizedFrame,
-    })
-
-    local restoreBtn = create("TextButton", {
-        Name = "RestoreBtn",
-        Size = UDim2.new(0, 26, 0, 26),
-        Position = UDim2.new(1, -30, 0.5, -13),
-        BackgroundColor3 = Color3.fromRGB(30, 25, 45),
-        Text = "+",
-        TextColor3 = Color3.fromRGB(220, 210, 255),
-        Font = Enum.Font.GothamBold,
-        TextSize = 22,
-        AutoButtonColor = true,
-        ZIndex = 10,
-        Parent = MinimizedFrame,
-    })
-    create("UICorner", { CornerRadius = UDim.new(0, 4), Parent = restoreBtn })
-
     -- ============================================================
-    -- MINIMIZE / RESTORE LOGIC
+    -- DRAG FUNCTIONALITY
     -- ============================================================
-    local isMinimized = false
+    local dragging, dragInput, dragStart, startPos
 
-    local function applyMinimized(state)
-        isMinimized = state
-        if state then
-            ContentFrame.Visible = false
-            MinimizedFrame.Visible = true
-            MainFrame.Size = UDim2.new(0, PANEL_W, 0, 32)
-            minimizeBtn.Text = "+"
-        else
-            ContentFrame.Visible = true
-            MinimizedFrame.Visible = false
-            MainFrame.Size = UDim2.new(0, PANEL_W, 0, PANEL_H)
-            minimizeBtn.Text = "−"
-        end
-    end
-
-    minimizeBtn.MouseButton1Click:Connect(function()
-        applyMinimized(not isMinimized)
-    end)
-
-    restoreBtn.MouseButton1Click:Connect(function()
-        applyMinimized(false)
-    end)
-
-    -- ============================================================
-    -- HELP POPUP
-    -- ============================================================
-    local HelpPopup = create("Frame", {
-        Name = "HelpPopup",
-        Size = UDim2.new(0, 420, 0, 220),
-        Position = UDim2.new(0.5, -210, 0.5, -110),
-        BackgroundColor3 = Color3.fromRGB(20, 18, 30),
-        BackgroundTransparency = 0.05,
-        BorderSizePixel = 0,
-        Visible = false,
-        ZIndex = 20,
-        Parent = ScreenGui,
-    })
-    create("UICorner", { CornerRadius = UDim.new(0, 12), Parent = HelpPopup })
-
-    local popupStroke = create("UIStroke", {
-        Color = Color3.fromRGB(124, 58, 237),
-        Thickness = 2,
-        Transparency = 0.3,
-        ApplyStrokeMode = Enum.ApplyStrokeMode.Border,
-        Parent = HelpPopup,
-    })
-
-    local popupClose = create("TextButton", {
-        Name = "CloseButton",
-        Size = UDim2.new(0, 28, 0, 28),
-        Position = UDim2.new(1, -34, 0, 6),
-        BackgroundColor3 = Color3.fromRGB(40, 35, 55),
-        Text = "✕",
-        TextColor3 = Color3.fromRGB(200, 180, 255),
-        Font = Enum.Font.GothamBold,
-        TextSize = 14,
-        AutoButtonColor = true,
-        ZIndex = 20,
-        Parent = HelpPopup,
-    })
-    create("UICorner", { CornerRadius = UDim.new(0, 4), Parent = popupClose })
-
-    local infoText = create("TextLabel", {
-        Name = "InfoText",
-        Size = UDim2.new(1, -24, 1, -40),
-        Position = UDim2.new(0, 12, 0, 12),
-        BackgroundTransparency = 1,
-        Text = [[How to use:
-Fexhub, keep on this is the main system so you can use auto write, and auto-submit,
-Auto-Write: When turned on, it will detect what SpyderSammy said at the top and will automatically type in the code box if your mouse or finger is hovering over the "Code Here..." box, make it as if you were actually typing a code,
-Auto-Submit: When on, it will auto submit the code after a custom amount of words its set to, by default it is set to submit after 1 word. Riddle solver, when turned on it will answer questions sammy asks, for example if he asks what the first og in the code box iwi"STRAWBERRYELEPHANT"]],
-        TextColor3 = Color3.fromRGB(210, 200, 230),
-        Font = Enum.Font.Gotham,
-        TextSize = 14,
-        TextWrapped = true,
-        TextXAlignment = Enum.TextXAlignment.Left,
-        TextYAlignment = Enum.TextYAlignment.Top,
-        ZIndex = 20,
-        Parent = HelpPopup,
-    })
-
-    -- Help Popup Drag Logic
-    local draggingPopup = false
-    local dragPopupInput = nil
-    local dragPopupStart = nil
-    local startPopupPos = nil
-
-    local function updatePopup(input)
-        local delta = input.Position - dragPopupStart
-        HelpPopup.Position = UDim2.new(
-            startPopupPos.X.Scale, startPopupPos.X.Offset + delta.X,
-            startPopupPos.Y.Scale, startPopupPos.Y.Offset + delta.Y
-        )
-    end
-
-    HelpPopup.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-            draggingPopup = true
-            dragPopupStart = input.Position
-            startPopupPos = HelpPopup.Position
-            input.Changed:Connect(function()
-                if input.UserInputState == Enum.UserInputState.End then
-                    draggingPopup = false
-                end
-            end)
-        end
-    end)
-
-    HelpPopup.InputChanged:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
-            dragPopupInput = input
-        end
-    end)
-
-    UserInputService.InputChanged:Connect(function(input)
-        if input == dragPopupInput and draggingPopup then
-            updatePopup(input)
-        end
-    end)
-
-    -- Help button click
-    helpBtn.MouseButton1Click:Connect(function()
-        HelpPopup.Visible = not HelpPopup.Visible
-    end)
-
-    popupClose.MouseButton1Click:Connect(function()
-        HelpPopup.Visible = false
-    end)
-
-    -- ============================================================
-    -- DRAG LOGIC FOR MAIN FRAME
-    -- ============================================================
-    local dragging = false
-    local dragInput = nil
-    local dragStart = nil
-    local startPos = nil
-
-    local function updateMain(input)
-        local delta = input.Position - dragStart
-        local newX = startPos.X.Offset + delta.X
-        local newY = startPos.Y.Offset + delta.Y
-        
-        config.panelX = newX
-        config.panelY = newY
-        saveConfig()
-        
-        MainFrame.Position = UDim2.new(
-            startPos.X.Scale, newX,
-            startPos.Y.Scale, newY
-        )
-    end
-
-    MainFrame.InputBegan:Connect(function(input)
+    titleBar.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
             dragStart = input.Position
             startPos = MainFrame.Position
+
             input.Changed:Connect(function()
                 if input.UserInputState == Enum.UserInputState.End then
                     dragging = false
@@ -1706,7 +1276,7 @@ Auto-Submit: When on, it will auto submit the code after a custom amount of word
         end
     end)
 
-    MainFrame.InputChanged:Connect(function(input)
+    titleBar.InputChanged:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
             dragInput = input
         end
@@ -1714,355 +1284,108 @@ Auto-Submit: When on, it will auto submit the code after a custom amount of word
 
     UserInputService.InputChanged:Connect(function(input)
         if input == dragInput and dragging then
-            updateMain(input)
+            local delta = input.Position - dragStart
+            MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+        end
+    end)
+
+    MainFrame:GetPropertyChangedSignal("Position"):Connect(function()
+        local pos = MainFrame.Position
+        if pos.X.Scale == 0 and pos.Y.Scale == 0 then
+            config.panelX = pos.X.Offset
+            config.panelY = pos.Y.Offset
+            saveConfig()
         end
     end)
 
     -- ============================================================
-    -- UPDATE COLLECTED COUNT
+    -- MINIMIZE FUNCTIONALITY
+    -- ============================================================
+    local isMinimized = false
+    local contentSize = ContentFrame.Size
+
+    minimizeBtn.MouseButton1Click:Connect(function()
+        isMinimized = not isMinimized
+        if isMinimized then
+            ContentFrame.Visible = false
+            MainFrame.Size = UDim2.new(0, PANEL_W, 0, 28)
+        else
+            ContentFrame.Visible = true
+            MainFrame.Size = UDim2.new(0, PANEL_W, 0, PANEL_H)
+        end
+    end)
+
+    -- ============================================================
+    -- HELP BUTTON
+    -- ============================================================
+    local helpFrame = create("Frame", {
+        Name = "HelpFrame",
+        Size = UDim2.new(0, 220, 0, 160),
+        Position = UDim2.new(1, 10, 0, 0),
+        BackgroundColor3 = Color3.fromRGB(10, 16, 32),
+        BorderSizePixel = 0,
+        Visible = false,
+        ZIndex = 20,
+        Parent = MainFrame,
+    })
+    create("UICorner", { CornerRadius = UDim.new(0, 10), Parent = helpFrame })
+    create("UIStroke", {
+        Color = Color3.fromRGB(40, 120, 255),
+        Thickness = 1,
+        Transparency = 0.3,
+        Parent = helpFrame,
+    })
+
+    local helpText = create("TextLabel", {
+        Size = UDim2.new(1, -16, 1, -16),
+        Position = UDim2.new(0, 8, 0, 8),
+        BackgroundTransparency = 1,
+        Text = "NexusHub Auto Code\n\nAuto Type: Types codes\ninto the code box\n\nAuto Submit: Submits\ncodes automatically\n\nRiddle Solver: Answers\nSAB riddle questions",
+        TextColor3 = Color3.fromRGB(150, 190, 240),
+        Font = Enum.Font.GothamMedium,
+        TextSize = 11,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Top,
+        ZIndex = 21,
+        Parent = helpFrame,
+    })
+
+    helpBtn.MouseButton1Click:Connect(function()
+        helpFrame.Visible = not helpFrame.Visible
+    end)
+
+    -- ============================================================
+    -- STATUS UPDATER
     -- ============================================================
     task.spawn(function()
-        while MainFrame and MainFrame.Parent do
-            if ContentFrame and ContentFrame:FindFirstChild("CollectedLabel") then
-                ContentFrame.CollectedLabel.Text = "Collected: " .. #collectedCodes
+        while task.wait(0.5) do
+            if not MainFrame or not MainFrame.Parent then break end
+            if _G.ScriptEnabled then
+                if _G.RiddleSolverEnabled then
+                    statusLabel.Text = "Status: Riddle Solver active"
+                elseif _G.AutoWriteEnabled then
+                    if _G.AutoSubmitEnabled then
+                        statusLabel.Text = "Status: Auto Write+Submit"
+                    else
+                        statusLabel.Text = "Status: Auto Typing..."
+                    end
+                else
+                    statusLabel.Text = "Status: Monitoring..."
+                end
+            else
+                statusLabel.Text = "Status: Disabled"
             end
-            task.wait(1)
+            lcLabel.Text = "Latest: " .. (latestCode or "none")
         end
     end)
-
 end
 
-local function init()
-    pcall(cleanupMonitoring)
-    buildGUI()
-    startPlayerGuiScanner()
-    startAutoWriteLoop()
-end
+-- ============================================================
+-- STARTUP
+-- ============================================================
+buildGUI()
+startPlayerGuiScanner()
+startAutoWriteLoop()
 
-local success, err = pcall(init)
-if not success then
-    warn("[AutoCode] INIT FAILED: " .. tostring(err))
-end
-
-repeat task.wait() until game:IsLoaded()
-
--- ===================== FEXHUB - STARTUP SPLASH =====================
-do
-	local Players = game:GetService("Players")
-	local LP2 = Players.LocalPlayer
-	local TweenService2 = game:GetService("TweenService")
-	local SoundService2 = game:GetService("SoundService")
-
-	local splashGui = Instance.new("ScreenGui")
-	splashGui.Name = "FexSplash"
-	splashGui.ResetOnSpawn = false
-	splashGui.DisplayOrder = 999
-	splashGui.IgnoreGuiInset = true
-	if not pcall(function() splashGui.Parent = game:GetService("CoreGui") end) then
-		splashGui.Parent = LP2:WaitForChild("PlayerGui")
-	end
-
-	local overlay = Instance.new("Frame", splashGui)
-	overlay.Size = UDim2.new(1,0,1,0)
-	overlay.BackgroundColor3 = Color3.fromRGB(0,0,0)
-	overlay.BackgroundTransparency = 0
-	overlay.BorderSizePixel = 0
-	overlay.ZIndex = 1
-
-	local tapHint = Instance.new("TextLabel", splashGui)
-	tapHint.Size = UDim2.new(1, 0, 0, 20)
-	tapHint.Position = UDim2.new(0, 0, 1, -36)
-	tapHint.BackgroundTransparency = 1
-	tapHint.Text = "tap anywhere to skip"
-	tapHint.TextColor3 = Color3.fromRGB(120, 80, 200)
-	tapHint.Font = Enum.Font.Gotham
-	tapHint.TextSize = 11
-	tapHint.ZIndex = 10
-	tapHint.TextXAlignment = Enum.TextXAlignment.Center
-
-	local skipZone = Instance.new("TextButton", splashGui)
-	skipZone.Size = UDim2.new(1,0,1,0)
-	skipZone.BackgroundTransparency = 1
-	skipZone.Text = ""
-	skipZone.ZIndex = 9
-
-	local container = Instance.new("Frame", splashGui)
-	container.Size = UDim2.new(0,320,0,120)
-	container.Position = UDim2.new(0.5,-160,0,-140)
-	container.BackgroundTransparency = 1
-	container.BorderSizePixel = 0
-	container.ZIndex = 2
-	container.ClipsDescendants = false
-
-	local titleSplash = Instance.new("TextLabel", container)
-	titleSplash.Size = UDim2.new(1,0,0,70)
-	titleSplash.Position = UDim2.new(0,0,0,0)
-	titleSplash.BackgroundTransparency = 1
-	titleSplash.Text = "FEXHUB"
-	titleSplash.TextColor3 = Color3.fromRGB(255,255,255)
-	titleSplash.Font = Enum.Font.GothamBlack
-	titleSplash.TextSize = 48
-	titleSplash.TextTransparency = 0
-	titleSplash.ZIndex = 3
-	do
-		local g = Instance.new("UIGradient", titleSplash)
-		g.Color = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(100,50,200)),
-			ColorSequenceKeypoint.new(0.5, Color3.fromRGB(180,80,255)),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(80,0,160))
-		})
-	end
-
-	local subSplash = Instance.new("TextLabel", container)
-	subSplash.Size = UDim2.new(1,0,0,24)
-	subSplash.Position = UDim2.new(0,0,0,72)
-	subSplash.BackgroundTransparency = 1
-	subSplash.Text = "redeemer"
-	subSplash.TextColor3 = Color3.fromRGB(160,100,220)
-	subSplash.Font = Enum.Font.Gotham
-	subSplash.TextSize = 13
-	subSplash.TextTransparency = 0
-	subSplash.ZIndex = 3
-
-	local fragments = {}
-	local fragTexts = {"FE","XH","UB"}
-	local fragColors = {
-		Color3.fromRGB(140,70,220),
-		Color3.fromRGB(200,100,255),
-		Color3.fromRGB(100,40,200),
-	}
-	for i, txt in ipairs(fragTexts) do
-		local frag = Instance.new("TextLabel", splashGui)
-		frag.Size = UDim2.new(0,90,0,60)
-		frag.AnchorPoint = Vector2.new(0.5,0.5)
-		frag.Position = UDim2.new(0.5, (i-2)*60, 0.5, -30)
-		frag.BackgroundTransparency = 1
-		frag.Text = txt
-		frag.TextColor3 = fragColors[i]
-		frag.Font = Enum.Font.GothamBlack
-		frag.TextSize = 44
-		frag.TextTransparency = 1
-		frag.ZIndex = 5
-		frag.Rotation = 0
-		table.insert(fragments, frag)
-	end
-
-	local function playSound(id, pitch, vol, parent, delay)
-		task.delay(delay or 0, function()
-			local s = Instance.new("Sound")
-			s.SoundId = id
-			s.PlaybackSpeed = pitch
-			s.Volume = vol
-			s.Parent = parent
-			s.RollOffMaxDistance = 0
-			s:Play()
-			game:GetService("Debris"):AddItem(s, 3)
-		end)
-	end
-
-	local function playGlitchImpact()
-		playSound("rbxassetid://1588058260", 1.0, 0.9, SoundService2, 0)
-		playSound("rbxassetid://8627516764", 0.8, 0.7, SoundService2, 0.02)
-		playSound("rbxassetid://1588058260", 1.4, 0.5, SoundService2, 0.05)
-		playSound("rbxassetid://8627516764", 1.2, 0.4, SoundService2, 0.1)
-	end
-
-	local function playWhistle()
-		local WHISTLE_ID = "rbxassetid://4612414100"
-		playSound(WHISTLE_ID, 2.2, 0.7, SoundService2, 0)
-		playSound(WHISTLE_ID, 1.7, 0.8, SoundService2, 0.07)
-		playSound(WHISTLE_ID, 1.2, 0.9, SoundService2, 0.15)
-		playSound(WHISTLE_ID, 0.85, 0.9, SoundService2, 0.24)
-		playSound(WHISTLE_ID, 0.55, 0.7, SoundService2, 0.34)
-		playSound(WHISTLE_ID, 0.3, 1.0, SoundService2, 0.5)
-	end
-
-	local function doShatterEffect()
-		pcall(playGlitchImpact)
-		local flash = Instance.new("Frame", splashGui)
-		flash.Size = UDim2.new(1,0,1,0)
-		flash.BackgroundColor3 = Color3.fromRGB(200,100,255)
-		flash.BackgroundTransparency = 0.3
-		flash.BorderSizePixel = 0
-		flash.ZIndex = 8
-		TweenService2:Create(flash, TweenInfo.new(0.18), {BackgroundTransparency=1}):Play()
-		game:GetService("Debris"):AddItem(flash, 0.3)
-		titleSplash.TextTransparency = 1
-		local RunService2 = game:GetService("RunService")
-		for i, frag in ipairs(fragments) do
-			frag.TextTransparency = 0
-			local dirX = (i - 2) * 80 + math.random(-80, 80)
-			local dirY = math.random(120, 280)
-			local rot = math.random(-180, 180)
-			local startPosX = frag.Position.X.Offset
-			local startPosY = frag.Position.Y.Offset
-			local t = 0
-			local conn
-			conn = RunService2.RenderStepped:Connect(function(dt)
-				t = t + dt
-				if t > 0.8 then frag.TextTransparency = 1; conn:Disconnect(); return end
-				local alpha = t / 0.8
-				local px = startPosX + dirX * alpha
-				local py = startPosY - dirY * alpha + 300 * alpha * alpha
-				local fade = math.clamp(alpha * 1.4 - 0.3, 0, 1)
-				frag.Position = UDim2.new(0.5, px, 0.5, py - 30)
-				frag.Rotation = rot * alpha
-				frag.TextTransparency = fade
-				frag.TextSize = math.clamp(44 - alpha * 20, 10, 44)
-			end)
-		end
-		for li = 1, 8 do
-			task.delay(li * 0.025, function()
-				local line = Instance.new("Frame", splashGui)
-				line.Size = UDim2.new(1, 0, 0, math.random(2,6))
-				line.Position = UDim2.new(0, 0, math.random(), 0)
-				line.BackgroundColor3 = Color3.fromRGB(math.random(80,200), math.random(0,80), math.random(150,255))
-				line.BackgroundTransparency = math.random() * 0.3
-				line.BorderSizePixel = 0
-				line.ZIndex = 7
-				TweenService2:Create(line, TweenInfo.new(0.12), {BackgroundTransparency=1}):Play()
-				game:GetService("Debris"):AddItem(line, 0.2)
-			end)
-		end
-	end
-
-	local splashDone = false
-	local function finishSplash()
-		if splashDone then return end
-		splashDone = true
-		TweenService2:Create(subSplash, TweenInfo.new(0.3), {TextTransparency=1}):Play()
-		TweenService2:Create(overlay, TweenInfo.new(0.4), {BackgroundTransparency=1}):Play()
-		tapHint.Visible = false
-	end
-
-	skipZone.MouseButton1Click:Connect(function()
-		titleSplash.TextTransparency = 1
-		subSplash.TextTransparency = 1
-		finishSplash()
-	end)
-
-	task.spawn(function()
-		TweenService2:Create(overlay, TweenInfo.new(0.2), {BackgroundTransparency=0.1}):Play()
-		task.wait(0.15)
-		pcall(playWhistle)
-		TweenService2:Create(container, TweenInfo.new(0.45, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out),
-			{Position=UDim2.new(0.5,-160,0.5,-60)}):Play()
-		task.wait(0.5)
-		doShatterEffect()
-		task.wait(0.85)
-		finishSplash()
-		task.wait(0.45)
-		if splashGui and splashGui.Parent then splashGui:Destroy() end
-	end)
-
-	local _t0 = tick()
-	while not splashDone and (tick() - _t0) < 3.0 do
-		task.wait(0.05)
-	end
-end
-
-local Players = game:GetService("Players")
-local TweenService = game:GetService("TweenService")
-
-local player = Players.LocalPlayer
-
--- Color Settings
-local COLOR_BLACK = Color3.fromRGB(15, 15, 15)
-local COLOR_PURPLE = Color3.fromRGB(170, 0, 255)
-local COLOR_GLOW = Color3.fromRGB(200, 100, 255)
-
--- Tween Configs
-local colorTweenInfo = TweenInfo.new(
-	1.5,
-	Enum.EasingStyle.Sine,
-	Enum.EasingDirection.InOut,
-	-1,
-	true
-)
-
-local pulseTweenInfo = TweenInfo.new(
-	1.2,
-	Enum.EasingStyle.Sine,
-	Enum.EasingDirection.InOut,
-	-1,
-	true
-)
-
-local function createHeadText(character)
-	local head = character:WaitForChild("Head", 5)
-	if not head then return end
-
-	-- Remove existing GUI
-	local existingGui = head:FindFirstChild("HubAdGui")
-	if existingGui then
-		existingGui:Destroy()
-	end
-
-	-- 1. Main Billboard Container
-	local billboardGui = Instance.new("BillboardGui")
-	billboardGui.Name = "HubAdGui"
-	billboardGui.Adornee = head
-	billboardGui.Size = UDim2.new(0, 220, 0, 45)
-	billboardGui.StudsOffset = Vector3.new(0, 2.8, 0)
-	billboardGui.AlwaysOnTop = true
-	billboardGui.MaxDistance = 150 -- Fades out gracefully at distance
-
-	-- 2. Dark Background Frame
-	local frame = Instance.new("Frame")
-	frame.Name = "CardFrame"
-	frame.Size = UDim2.new(1, 0, 1, 0)
-	frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-	frame.BackgroundTransparency = 0.25
-	frame.Parent = billboardGui
-
-	-- Rounded Corners for Background
-	local uiCorner = Instance.new("UICorner")
-	uiCorner.CornerRadius = UDim.new(0, 8)
-	uiCorner.Parent = frame
-
-	-- Glow Border for Background
-	local uiStroke = Instance.new("UIStroke")
-	uiStroke.Thickness = 2
-	uiStroke.Color = COLOR_GLOW
-	uiStroke.Transparency = 0.3
-	uiStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-	uiStroke.Parent = frame
-
-	-- 3. Text Label
-	local textLabel = Instance.new("TextLabel")
-	textLabel.Size = UDim2.new(1, -10, 1, -10)
-	textLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
-	textLabel.AnchorPoint = Vector2.new(0.5, 0.5)
-	textLabel.BackgroundTransparency = 1
-	textLabel.Text = "discord.gg/fexhub"
-	textLabel.TextColor3 = COLOR_BLACK
-	textLabel.Font = Enum.Font.FredokaOne
-	textLabel.TextScaled = true
-	textLabel.Parent = frame
-
-	-- Text Stroke for Sharp Contrast
-	local textStroke = Instance.new("UIStroke")
-	textStroke.Thickness = 1.5
-	textStroke.Color = Color3.fromRGB(255, 255, 255)
-	textStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
-	textStroke.Parent = textLabel
-
-	billboardGui.Parent = head
-
-	-- 4. Play Animations
-	-- Color Cycle Animation
-	local colorTween = TweenService:Create(textLabel, colorTweenInfo, { TextColor3 = COLOR_PURPLE })
-	colorTween:Play()
-
-	-- Subtle Size Pulse Animation
-	local pulseTween = TweenService:Create(frame, pulseTweenInfo, { Size = UDim2.new(0, 230, 0, 48) })
-	pulseTween:Play()
-end
-
--- Connect to character spawning
-player.CharacterAdded:Connect(createHeadText)
-
--- Run for current character if loaded
-if player.Character then
-	task.spawn(createHeadText, player.Character)
-end
+print("[NexusHub] Loaded successfully!")
+print("[NexusHub] made by killer mel and ssaaa")
