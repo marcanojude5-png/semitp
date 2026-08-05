@@ -463,7 +463,7 @@ if not pcall(function() GUI.Parent = game.CoreGui end) then GUI.Parent = playerG
 
 local Window = Instance.new("Frame")
 Window.Name = "Window"
-Window.Size = UDim2.fromOffset(310, 355)
+Window.Size = UDim2.fromOffset(310, 323)
 Window.AnchorPoint = Vector2.new(1, 0)
 Window.Position = UDim2.new(1, -8, 0, 8)
 Window.BackgroundColor3 = COLORS.Window
@@ -774,7 +774,7 @@ do
 
     local function isOverHeaderControl(position)
         local btnPos = Header.AbsolutePosition
-        local btnSize = AutoWriteButton.AbsoluteSize
+        local btnSize = Header.AbsoluteSize
         return position.X >= (btnPos.X - 10)
             and position.X <= (btnPos.X + btnSize.X + 10)
             and position.Y >= (btnPos.Y - 10)
