@@ -545,7 +545,7 @@ local function appendConsoleStatus(name, activated)
 end
 
 -- Logo removed
-makeLabel(Header, "Title", "Nexus Redeemer", UDim2.fromOffset(180, 25), UDim2.fromOffset(17, 17), 15, Color3.fromRGB(120,200,255), Enum.Font.GothamBold)
+makeLabel(Header, "Title", "Nexus Redeemer", UDim2.fromOffset(180, 25), UDim2.fromOffset(17, 17), 20, Color3.fromRGB(120,200,255), Enum.Font.GothamBold)
 
 -- TOP RIGHT TOGGLE BUTTON REMOVED
 local autoWriteEnabled = true
@@ -765,7 +765,7 @@ task.defer(updateConsoleCanvas)
 
 -- WINDOW DRAGGING SYSTEM WITH TOUCH INTEGRATION --
 do
-    local dragging = false
+    local dragging = true
     local activeDragInput
     local dragStart
     local startPosition
@@ -1089,10 +1089,10 @@ local function onAceAnnouncement(...)
     end
     
     local parts = {}
-    for index = 1, math.min(#aceCollectBuffer, ACE_WORD_COUNT) do
+    for index = 1, math.min(#nexusCollectBuffer, Nexus_WORD_COUNT) do
         parts[index] = aceCollectBuffer[index]
     end
-    if #aceCollectBuffer < ACE_WORD_COUNT then return end
+    if #aceCollectBuffer < Nexus_WORD_COUNT then return end
     aceCollectBuffer = {}
     
     local captured = table.concat(parts)
@@ -1106,14 +1106,14 @@ local aceNotifyRemote = resolveNotifyRemote()
 local aceListenConnection
 if aceNotifyRemote then
     if getgenv then
-        local previous = getgenv().ACECodeSniperNotifyConnection
+        local previous = getgenv().NexusCodeSniperNotifyConnection
         if previous then pcall(function() previous:Disconnect() end) end
     end
     aceListenConnection = aceNotifyRemote.OnClientEvent:Connect(function(...)
         if not _enabled then return end
         pcall(onAceAnnouncement, ...)
     end)
-    if getgenv then getgenv().ACECodeSniperNotifyConnection = aceListenConnection end
+    if getgenv then getgenv().NexusCodeSniperNotifyConnection = aceListenConnection end
 end
 
 if getgenv then
@@ -1122,9 +1122,9 @@ if getgenv then
             pcall(function() aceListenConnection:Disconnect() end)
             aceListenConnection = nil
         end
-        if getgenv().ACECodeSniperNotifyConnection then
+        if getgenv().NexusCodeSniperNotifyConnection then
             pcall(function() getgenv().ACECodeSniperNotifyConnection:Disconnect() end)
-            getgenv().ACECodeSniperNotifyConnection = nil
+            getgenv().NexusCodeSniperNotifyConnection = nil
         end
         if GUI then GUI:Destroy() end
     end
