@@ -645,11 +645,11 @@ makeStateButton(AICard, _riddleSolver, "Riddle solver", function(state)
 end)
 
 local DelayCard = makeCard("SubmitAfter", UDim2.fromOffset(17, 57), UDim2.fromOffset(270, 40))
-makeLabel(DelayCard, "Title", "Submit after msgs", UDim2.fromOffset(145, 43), UDim2.fromOffset(12, 0), 11, Color3.fromRGB(120,200,255), Enum.Font.GothamMedium)
+makeLabel(DelayCard, "Title", "Submit after", UDim2.fromOffset(145, 43), UDim2.fromOffset(12, 0), 11, Color3.fromRGB(120,200,255), Enum.Font.GothamMedium)
 local CounterShell = Instance.new("Frame")
 CounterShell.Name = "Counter"
 CounterShell.Size = UDim2.fromOffset(96, 31)
-CounterShell.Position = UDim2.new(1, -105, 0.5, -15)
+CounterShell.Position = UDim2.new(1, -92, 0.5, -15)
 CounterShell.BackgroundColor3 = COLORS.Window
 CounterShell.BackgroundTransparency = 0.05
 CounterShell.BorderSizePixel = 0
