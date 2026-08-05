@@ -501,17 +501,7 @@ end
 workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(watchViewport)
 watchViewport()
 
-local BackgroundImage = Instance.new("ImageLabel")
-BackgroundImage.Name = "ACEBackground"
-BackgroundImage.Size = UDim2.new(1, 0, 1, 0)
-BackgroundImage.Position = UDim2.fromOffset(0, 0)
-BackgroundImage.BackgroundTransparency = 1
-BackgroundImage.Image = "rbxassetid://137692455767789"
-BackgroundImage.ImageTransparency = 0
-BackgroundImage.ScaleType = Enum.ScaleType.Stretch
-BackgroundImage.ZIndex = 1
-BackgroundImage.Parent = Window
-addCorner(BackgroundImage, 14)
+
 
 local Header = Instance.new("Frame")
 Header.Name = "Header"
@@ -590,7 +580,7 @@ local function makeCard(name, position, size)
     card.BorderSizePixel = 0
     card.Parent = Settings
     addCorner(card, 9)
-    addStroke(card, COLORS.White, 1, 0.76)
+    addStroke(card, COLORS.White, 1.5, 0.76)
     return card
 end
 
