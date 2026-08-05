@@ -395,7 +395,7 @@ end
 
 -- STYLING & HELPER UTILITIES --
 local COLORS = {
-    Window = Color3.fromRGB(6, 6, 7),
+    Window = Color3.fromRGB(18, 22, 31),
     Row = Color3.fromRGB(15, 15, 17),
     Control = Color3.fromRGB(35, 35, 39),
     Log = Color3.fromRGB(10, 10, 12),
