@@ -1128,3 +1128,4 @@ if getgenv then
         end
         if GUI then GUI:Destroy() end
     end
+end
